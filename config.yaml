@@ -1,0 +1,56 @@
+# 数据配置
+data:
+  provider: "yfinance"  # 数据源: yfinance, alpaca, polygon
+  cache_enabled: true
+  cache_dir: "./data/cache"
+
+# 回测配置
+backtest:
+  initial_capital: 100000
+  commission: 0.001  # 0.1%
+  slippage: 0.001    # 0.1%
+
+# 风险管理配置
+risk:
+  max_position_size: 0.1  # 单个仓位最大 10%
+  max_positions: 10       # 最多持有 10 个仓位
+  stop_loss_pct: 0.02     # 2% 止损
+
+# 策略默认参数
+strategies:
+  rsi:
+    period: 14
+    oversold: 30
+    overbought: 70
+
+  dual_ma:
+    fast_period: 20
+    slow_period: 50
+
+  bollinger:
+    period: 20
+    std_dev: 2.0
+
+  turtle:
+    entry_period: 20
+    exit_period: 10
+
+  macd:
+    fast: 12
+    slow: 26
+    signal: 9
+
+# 过滤器配置
+filters:
+  volume:
+    min_volume: 1000000
+
+  volatility:
+    max_volatility: 0.05
+    period: 20
+
+  liquidity:
+    min_dollar_volume: 10000000
+
+  trend:
+    ma_period: 200
